@@ -108,7 +108,7 @@ describe "Sub Queries Exercises" do
         ["Dallas", "Brazilian Shorthair"],
         ["Damian", "Brazilian Shorthair"],
         ["Damon", "Brazilian Shorthair"],
-        ["Daysi", "Brazilian Shorthair"],
+        ["Days", "Brazilian Shorthair"],
         ["Deena", "Brazilian Shorthair"],
         ["Denyse", "Brazilian Shorthair"],
         ["Dominick", "Brazilian Shorthair"],
