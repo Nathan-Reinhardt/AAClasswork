@@ -130,7 +130,18 @@ def no_apples_for_blair
 
   # DO NOT USE A SUBQUERY
   execute(<<-SQL)
-
+    SELECT
+      cats.name
+    FROM
+      cats
+    JOIN
+      cattoys ON cattoys.cat_id = cats.id 
+    JOIN
+      toys ON cattoys.toy_id = toys.id 
+    WHERE
+      toys.name = 'Apple' AND cats.name != 'Blair'
+    ORDER BY
+      cats.name;
   SQL
 end
 
@@ -142,7 +153,25 @@ def no_apples_for_blair_sub
 
   # USE A SUBQUERY
   execute(<<-SQL)
-
+    SELECT
+      DISTINCT(cats.name)
+    FROM
+      cats
+    WHERE
+      cats.name IN (
+        SELECT
+          cats.name
+        FROM
+          cats
+        JOIN
+          cattoys ON cattoys.cat_id = cats.id
+        JOIN
+          toys ON cattoys.toy_id = toys.id
+        WHERE
+          cats.name != 'Blair' AND toys.name = 'Apple'
+      )
+    ORDER BY
+      cats.name;
   SQL
 end
 
@@ -153,7 +182,18 @@ def toys_that_brendon_owns
 
   # DO NOT USE A SUBQUERY
   execute(<<-SQL)
-
+    SELECT
+      toys.name
+    FROM
+      toys
+    JOIN
+      cattoys ON cattoys.toy_id = toys.id
+    JOIN
+      cats ON cats.id = cattoys.cat_id
+    WHERE
+      cats.name = 'Brendon'
+    ORDER BY
+      toys.name;
   SQL
 end
 
@@ -163,7 +203,26 @@ def toys_that_brendon_owns_sub
 
   # USE A SUBQUERY
   execute(<<-SQL)
-
+    SELECT
+      DISTINCT(toys.name)
+    FROM
+      toys
+    WHERE
+      toys.name IN
+      (
+      SELECT
+        toys.name
+      FROM
+        toys
+      JOIN
+        cattoys ON cattoys.toy_id = toys.id
+      JOIN
+        cats ON cattoys.cat_id = cats.id
+      WHERE
+        cats.name = 'Brendon'
+      )
+    ORDER BY
+      toys.name;
   SQL
 end
 
@@ -177,7 +236,16 @@ def price_like_shiny_mouse
 
   # DO NOT USE A SUBQUERY
   execute(<<-SQL) 
-  
+    SELECT
+      t2.name , t2.price
+    FROM
+      toys as t1
+    JOIN
+      toys as t2 ON t1.price = t2.price
+    WHERE
+      t1.name = 'Shiny Mouse' AND t2.name != 'Shiny Mouse'
+    ORDER BY
+      t2.name
   SQL
 end
 
@@ -191,7 +259,21 @@ def price_like_shiny_mouse_sub
 
   # USE A SUBQUERY
   execute(<<-SQL) 
-
+    SELECT 
+      name, price 
+    FROM
+      toys 
+    WHERE 
+      price IN (
+        SELECT
+          price 
+        FROM
+          toys 
+        WHERE 
+          name = 'Shiny Mouse'
+      ) AND name != 'Shiny Mouse'
+    ORDER BY
+      name
   SQL
 end
 
@@ -203,7 +285,16 @@ def just_like_orange
 
   # DO NOT USE A SUBQUERY
   execute(<<-SQL)
-
+    SELECT
+      c2.name, c2.breed
+    FROM
+      cats as c1 
+    JOIN
+      cats as c2 ON c1.breed = c2.breed 
+    WHERE 
+      c1.name = 'Orange' AND c2.name != 'Orange'
+    ORDER BY
+      c2.name
   SQL
 end
 
@@ -215,7 +306,21 @@ def just_like_orange_sub
 
   # USE A SUBQUERY
   execute(<<-SQL)
-
+    SELECT
+     name, breed
+    FROM
+      cats
+    WHERE 
+      breed IN (
+        SELECT
+          breed 
+        FROM
+          cats
+        WHERE 
+          name = 'Orange'
+      ) AND name != 'Orange'
+    ORDER BY
+      name
   SQL
 end
 
@@ -229,7 +334,22 @@ def toys_that_jet_owns
 
   # DO NOT USE A SUBQUERY
   execute(<<-SQL)
-
+    SELECT
+      DISTINCT(c2.name), t1.name
+    FROM
+      cats as c1
+    JOIN
+      cattoys as ct1 ON c1.id = ct1.cat_id
+    JOIN
+      toys as t1 ON ct1.toy_id = t1.id
+    JOIN
+      cattoys as ct2 ON ct2.toy_id = t1.id
+    JOIN
+      cats as c2 ON ct2.cat_id = c2.id
+    WHERE
+      c2.name != 'Jet' AND c1.name = 'Jet'
+    ORDER BY
+      c2.name
   SQL
 end
 
@@ -241,6 +361,28 @@ def toys_that_jet_owns_sub
 
   # USE A SUBQUERY
   execute(<<-SQL)
-
+    SELECT
+      DISTINCT(cats.name), toys.name
+    FROM
+      toys
+      JOIN
+        cattoys ON cattoys.toy_id = toys.id
+      JOIN
+        cats ON cats.id = cattoys.cat_id
+    WHERE
+      toys.id IN (
+        SELECT
+          toys.id
+        FROM
+          toys
+        JOIN
+          cattoys ON cattoys.toy_id = toys.id
+        JOIN
+          cats ON cats.id = cattoys.cat_id
+        WHERE
+          cats.name = 'Jet'
+      ) AND cats.name != 'Jet'
+    ORDER BY
+      cats.name
   SQL
 end
