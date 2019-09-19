@@ -1,12 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (11.0.1)
     sqlite3 (1.4.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   sqlite3
 
 BUNDLED WITH
