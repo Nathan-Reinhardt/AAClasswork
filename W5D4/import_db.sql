@@ -79,12 +79,13 @@ VALUES
 INSERT INTO
   replies(question_reference_id, parent_reference_id, author_reference_id, body)
 VALUES
-  (1,NULL,3,'That is a good question.'),
+  (1,NULL,1,'That is a good question.'),
   (1,1,3,'The molecules in the sky refract the light.'),
   (2,NULL,5,'Mount Everest.'),
-  (2,3,5,'No that is wrong!'),
-  (2,4,5,'The tallest mountain is actually on Mars.'),
-  (3,NULL,2,'No one knows.');
+  (2,3,4,'No that is wrong!'),
+  (2,4,2,'The tallest mountain is actually on Mars.'),
+  (3,NULL,2,'No one knows.'),
+  (3,6,1,'I know but it is a secret.');
 
 INSERT INTO
   question_likes(user_id, question_id)
