@@ -100,7 +100,7 @@ WHERE
 2. Finding toys that belong to a particular cat
 
 
-EXPLAIN SELECT
+EXPLAIN ANALYZE SELECT
   toys.name
 FROM
   toys
