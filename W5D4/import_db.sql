@@ -74,7 +74,8 @@ VALUES
   (5,2),
   (2,3),
   (4,2),
-  (1,3);
+  (1,3),
+  (5,3);2
 
 INSERT INTO
   replies(question_reference_id, parent_reference_id, author_reference_id, body)
