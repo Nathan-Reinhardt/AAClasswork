@@ -1,6 +1,8 @@
 require_relative 'questions_database.rb'
 require_relative 'user'
 require_relative 'reply'
+require_relative 'question_follow'
+require_relative 'question_like'
 
 class Question
 
@@ -28,6 +30,10 @@ class Question
     data.map { |datum| Question.new(datum) }
   end
 
+  def self.most_followed(n)
+    QuestionFollow.most_followed_questions(n)
+  end
+
   attr_accessor :title, :body, :associated_author
 
   def initialize(options)
@@ -43,6 +49,18 @@ class Question
 
   def replies
     Reply.find_by_question_id(@id)
+  end
+
+  def followers
+    QuestionFollow.followers_for_question_id(@id)
+  end
+
+  def likers
+    QuestionLike.likers_for_question_id(@id)
+  end
+
+  def num_likes
+    QuestionLike.num_likes_for_question_id(@id)
   end
   
 end

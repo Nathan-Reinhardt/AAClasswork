@@ -31,18 +31,36 @@ class QuestionFollow
     follow_data.map { |datum| User.new(datum) }
   end
 
-  def self.followers_for_user_id(user_id)
+  def self.followed_questions_for_user_id(user_id)
     follow_data = QuestionsDatabase.instance.execute(<<-SQL, user_id)
       SELECT 
         q.id, q.title, q.body, q.associated_author 
       FROM
         question_follows AS qf
       JOIN
-        questions AS q ON qf.user_id = q.id
+        questions AS q ON qf.question_id = q.id
       WHERE
         user_id = ?
     SQL
     follow_data.map { |datum| Question.new(datum) }
+  end
+
+  def self.most_followed_questions(n)
+    quests = QuestionsDatabase.instance.execute(<<-SQL, n)
+      SELECT
+        q.id, q.title, q.body, q.associated_author
+      FROM
+        question_follows as qf
+      JOIN
+        questions as q ON qf.question_id = q.id
+      GROUP BY
+        qf.question_id
+      ORDER BY
+        COUNT(qf.question_id) DESC
+      LIMIT
+        ?
+    SQL
+    quests.map { |datum| Question.new(datum) }
   end
 
   attr_accessor :user_id, :question_id
