@@ -2,9 +2,9 @@ class ArtworksController < ApplicationController
 
   def index
     if params.has_key?(:user_id)
+      user = User.find(params[:user_id])
       @artworks = Artwork.where(artist_id: params[:user_id])
-      #@artworks +=  
-
+      @artworks +=  user.shared_artworks
     else 
       @artworks = Artwork.all
     end
