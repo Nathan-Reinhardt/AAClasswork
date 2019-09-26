@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
 
     def index
-        render json: User.all
+        if params[:querry]
+            # @users = User.where(<<-SQL, params[:username])
+            # LIKE '%?%'
+            # SQL
+            # @users = User.find_by(sql("SELECT username FROM users WHERE users.username LIKE '%#{ params[:username] }%'"))
+            # @users = User.where("username LIKE '%#{ params[:querry] }%'")
+            @users = User.where("username LIKE ?", "%#{ params[:querry] }%")
+        else
+            @users = User.all
+        end
+
+        render json: @users
     end
 
     def create
