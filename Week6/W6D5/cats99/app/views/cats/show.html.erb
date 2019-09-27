@@ -1,0 +1,33 @@
+<h1>This Adorable Cat!!!</h1>
+
+<style>
+  table td {
+  border: 1px solid #333;
+  border-width: 6px;
+}
+  th {
+  border: 1px solid blue;
+  border-width: 6px;
+  background-color: gold;
+}
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="4"><%=@cat.name%></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Age</td>
+      <td>Color</td>
+      <td>Gender</td>
+      <td>Description</td>
+    </tr>
+      <td><%=@cat.age%></td>
+      <td><%=@cat.color%></td>
+      <td><%=@cat.sex%></td>
+      <td><%=@cat.description%></td>
+  </tbody>
+</table>
