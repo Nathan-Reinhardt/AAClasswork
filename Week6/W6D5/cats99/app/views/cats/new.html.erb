@@ -1,0 +1,28 @@
+<h1>Add cat to collection</h1>
+<form action="<%=cats_url%>" method="post">
+  <label for="name">Name</label>
+  <input id="name" type="text" name="cat[name]">
+  <br>
+  <label for="birthday">Birthday</label>
+  <input id="birthday" type="date" name="cat[birth_date]">
+  <br>
+  <label for="color">Color</label>
+  <select id="color" name="cat[color]">
+  <option disabled selected>Please Select</option>
+  <option value="red">Red</option>
+  <option value="orange">Orange</option>
+  <option value="yellow">Yellow</option>
+  <option value="green">Green</option>
+  <option value="blue">Blue</option>
+  <option value="purple">Purple</option>
+  </select>
+  <br>
+  <label for="sex">Gender</label>
+  <input id="sex" type="radio" name="cat[sex]" value="M"> M
+  <input id="sex" type="radio" name="cat[sex]" value="F"> F
+  <br>
+  <label for="description">Description</label>
+  <textarea id="description" name="cat[description]"></textarea>
+  <br>
+  <input type="submit" value="Submit">
+</form>
