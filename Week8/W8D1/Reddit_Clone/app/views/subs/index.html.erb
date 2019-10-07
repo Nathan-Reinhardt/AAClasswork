@@ -1,0 +1,8 @@
+<h1>I AM THE INDEX</h1>
+<h2>My Subreddits</h2>
+<% @subs.each do |sub| %>
+  <ul>
+    <li><%= sub.title %></li>
+    <li><%= sub.description %></li>
+  </ul>
+<% end %>
