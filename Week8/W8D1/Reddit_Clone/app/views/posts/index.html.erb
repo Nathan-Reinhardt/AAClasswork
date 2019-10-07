@@ -1,0 +1,9 @@
+<h1>I AM THE INDEX</h1>
+<h2>My Posts</h2>
+<ul>
+<% @posts.each do |post| %>
+  <li><%= post.title %></li>
+  <li><%= post.url %></li>
+  <li><%= post.content %></li>
+<% end %>
+</ul>
