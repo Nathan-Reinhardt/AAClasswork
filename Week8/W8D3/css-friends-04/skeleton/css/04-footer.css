@@ -1,0 +1,6 @@
+/* PHASE 4: Footer */
+.foot {
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: space-evenly;
+}
