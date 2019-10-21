@@ -1,0 +1,95 @@
+
+html {
+  box-sizing: border-box;
+  background: #A9DBB8;
+  text-align: center;
+}
+
+h1 {
+  color: #F0F2EF;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.welcome {
+  font-weight: 400;
+  margin-top: 100px;
+}
+
+.dog-link {
+  visibility: hidden;
+  background-color: whitesmoke;
+}
+
+.clock-holder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  width: 200px;
+  height: 55px;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+#clock > p {
+  color: white;
+  font-size: 20px;
+}
+
+#party {
+  font-size: 50px;
+}
+
+.nav-container {
+  justify-content: space-between;
+  display: flex;
+  margin: 50px;
+  height: 50px;
+}
+
+#drop-id {
+  background-color: whitesmoke;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  color: rgb(118, 123, 145);
+}
+
+
+
+/*  Phase 4: Slide In & Out Classes */
+
+.align-left {
+  float: left;
+  margin-right: 20px;
+}
+
+.align-right {
+  float: right;
+  margin-left: 20px;
+}
+
+.slide {
+  opacity: 0;
+  transition: all .5s;
+}
+
+.align-left.slide {
+  transform: translateX(-30%) scale(0.95);
+}
+
+.align-right.slide {
+  transform: translateX(30%) scale(0.95);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
