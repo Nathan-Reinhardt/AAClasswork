@@ -1,0 +1,50 @@
+.revealed {
+  border-style: inset;
+  background-color: lightgreen;
+  font-size: 20px;
+}
+
+.bombed {
+  border-style: inset;
+  background-color: lightsalmon;
+}
+
+.flagged {
+  border-style: outset;
+  color: red;
+  background-color: lightgray;
+  font-size: 20px;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+}
+
+.board-container {
+  display: block;
+}
+
+.row-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 470px;
+  justify-content: center;
+}
+
+.tile, .flagged, .bombed, .revealed {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.tile {
+  border-style: outset;
+  background-color: lightgray;
+}
+
+#title {
+  display: block;
+  text-align: center;
+}
+
