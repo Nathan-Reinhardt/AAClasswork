@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ currentUser, logout }) => {
-    const display = currentUser ? (
+const GreetingContainer = (props) => {
+    const display = props.currentUser ? (
         <div>
             <p>Hello, {currentUser.username}</p>
-            <button onClick={logout}>Log Out</button>
+            <button onClick={props.logout}>Log Out</button>
         </div>
     ) : (
         <div>
             <Link className="btn" to="/signup">Sign Up</Link>
+            <br/>
             <Link className="btn" to="/login">Log In</Link>
         </div>
     );
@@ -20,3 +21,5 @@ export default ({ currentUser, logout }) => {
         </div>
     );
 };
+
+export default GreetingContainer;
