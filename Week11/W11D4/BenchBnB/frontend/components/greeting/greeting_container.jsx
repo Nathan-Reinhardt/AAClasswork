@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
 import Greeting from './greeting';
-import { selectUserId } from "../../reducers/selectors";
 
 const mapStateToProps = state => ({
-    currentUser: selectUserId(state)
+    currentUser: state.entities.users[state.session.id]
 });
 
 const mapDispatchToProps = dispatch => ({
