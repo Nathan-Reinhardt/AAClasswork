@@ -1,6 +1,7 @@
 import React from "react";
 import GreetingContainer from "./greeting/greeting_container";
 import SignupFormContainer from "./session/signup_form_cointainer";
+import LoginFormContainer from "./session/login_form_container";
 
 const App = () => (
   <div>
